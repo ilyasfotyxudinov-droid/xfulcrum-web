@@ -1,0 +1,100 @@
+<app-bootloader (complete)="onBootComplete()" />
+
+<!-- Tilda Grid Overlay (Visible when showGrid is true) -->
+@if (showGrid()) {
+  <div class="fixed inset-0 z-[9999] pointer-events-none flex justify-center">
+    <div class="w-full max-w-[1160px] h-full grid grid-cols-12 gap-[40px] px-[20px] mx-auto opacity-20">
+       @for (col of [1,2,3,4,5,6,7,8,9,10,11,12]; track col) {
+         <div class="h-full bg-red-500/50"></div>
+       }
+    </div>
+    <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-mono px-2 py-1 z-[10000]">
+      GRID DEBUG: 12 COL / 1160px
+    </div>
+  </div>
+}
+
+<!-- Main App (Visible only after boot) -->
+<main 
+  class="min-h-screen relative overflow-hidden bg-[#030712] text-slate-200 font-sans selection:bg-amber-500/30 selection:text-amber-200 transition-opacity duration-1000"
+  [class.opacity-0]="!isBooted()"
+  [class.opacity-100]="isBooted()"
+>
+  
+  <app-header />
+
+  <!-- Global background noise/grid -->
+  <div class="fixed inset-0 z-0 pointer-events-none tech-grid opacity-40"></div>
+  
+  <!-- Content Wrapper -->
+  <div class="relative z-10 flex flex-col pt-16">
+    <app-hero />
+    
+    <!-- MARKET CONTEXT DIVIDER -->
+    <app-ticker />
+    
+    <div id="mission">
+      <app-philosophy />
+    </div>
+    
+    <div id="protocol" class="scroll-mt-24">
+      <app-methodology />
+    </div>
+    
+    <!-- EVIDENCE: Show tangible assets here to prove the methodology -->
+    <div id="artifacts" class="scroll-mt-24">
+      <app-artifacts />
+    </div>
+
+    <!-- Social Proof / Authority -->
+    <app-author />
+    
+    <!-- The Journey -->
+    <app-lifecycle />
+    <app-trends />
+    
+    <!-- LEAD MAGNET: Catch user after reading about trends -->
+    <div id="terminal" class="scroll-mt-20">
+      <app-terminal />
+    </div>
+
+    <!-- Proof -->
+    <div id="simulator" class="scroll-mt-20">
+      <app-calculator />
+    </div>
+    
+    <app-metrics />
+    
+    <!-- TRIPWIRE / PRICING -->
+    <div id="pricing" class="scroll-mt-20">
+      <app-pricing />
+    </div>
+
+    <!-- Risk Reversal -->
+    <app-guarantee />
+    <app-faq />
+
+    <!-- FINAL CONVERSION TRAP: Interactive Audit (Now Primary Focus) -->
+    <app-scoping />
+
+    <!-- RECRUITMENT: Moved to bottom (Secondary Audience) -->
+    <div id="join" class="scroll-mt-20">
+      <app-join />
+    </div>
+    
+    <footer class="py-12 border-t border-slate-900 bg-black text-center relative overflow-hidden">
+       <!-- Footer decoration -->
+       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-[1px] bg-gradient-to-r from-transparent via-cyan-900 to-transparent"></div>
+       
+       <h3 class="font-tech text-2xl text-slate-800 mb-4 uppercase tracking-widest">xFulcrum</h3>
+       <p class="text-slate-700 text-xs font-mono">
+         SYSTEM CORE // V.2.4 // SIMULATION-ACTIVE<br>
+         &copy; 2026. All systems operational.
+       </p>
+       <div class="mt-4">
+         <a href="#" class="text-xs text-slate-700 hover:text-slate-500 underline transition-colors">Политика конфиденциальности</a>
+       </div>
+    </footer>
+  </div>
+
+</main>
