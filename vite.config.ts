@@ -7,7 +7,6 @@ export default defineConfig({
     mainFields: ['module'],
   },
   build: {
-    outDir: 'dist',
-    emptyOutDir: true,
-  }
+    target: ['es2020'],
+  },
 });
