@@ -6,4 +6,8 @@ export default defineConfig({
   resolve: {
     mainFields: ['module'],
   },
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+  }
 });
